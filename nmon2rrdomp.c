@@ -973,8 +973,8 @@ int	main(int argc, char **argv)
 
 	if (debug)
 		for (i = 0; i < linemax; i++)
-			printf("line %d lastline %s\n", i, line[i-1]);
-
+		//	printf("line %d lastline %s\n", i, line[i-1]);
+                printf("line %d lastline %s\n", i, line[i]);
 	printf("nmon2rrd version %s\n", VERSION);
 	n = findfirst("AAA,progname");
 	if (n == -1) {
@@ -1097,10 +1097,15 @@ int	main(int argc, char **argv)
 
 	/* AAA,cpus,12 */
 	if ( (n = findfirst("AAA,cpus")) != -1)
+	        cpus=cpus2=0;
 		sscanf(line[n], "AAA,cpus,%d,%d", &cpus2, &cpus);
+		if(cpus==0)
+		cpus=cpus2;
+		
 	else {
 		printf("WARNING: missing \"AAA,cpus\" line assuming 1\n");
-		cpus = 1;
+	//	cpus = 1;
+	        cpus2=cpus=1;
 	}
 
 	printf("cpus=%d online out of a maximum of %d\n", cpus, cpus2);
@@ -1427,6 +1432,8 @@ int	main(int argc, char **argv)
 		if (debug)
 			for (i = 0; i < a_dg_size; i++)
 				printf("dg are = %s\n", a_dg[i]);
+				if(a_dg_size==0)
+				dg_found=0;
 	}
 	n = findfirst("ESSREAD,ESS");
 	if (n != -1)
@@ -1504,7 +1511,7 @@ int	main(int argc, char **argv)
 
 	if (cpus > 1)
 		for (i = 1; i <= cpus; i++) {
-			sprintf(string2, "cpu%02d", i);
+			sprintf(string2, "cpu%03d", i);
 			rrdcreate(a_cpu, a_cpu_size, string2);
 		}
 
@@ -1740,8 +1747,8 @@ int	main(int argc, char **argv)
 	fprintf(wfp, "<BR>\n");
 	if (cpus > 1)
 		for (i = 1; i <= cpus; i++) {
-			sprintf(string1, "CPU number %02d Utilisation", i);
-			sprintf(string2, "cpu%02d", i);
+			sprintf(string1, "CPU number %03d Utilisation", i);
+			sprintf(string2, "cpu%03d", i);
 			rrdgraph(a_cpu, a_cpu_size, string2, string2, PERCENT, string1 , AREA, "Percent");
 		}
 
