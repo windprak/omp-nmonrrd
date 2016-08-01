@@ -12,6 +12,7 @@ Then we have to compile nmon for mainframe:
 wget http://ncu.dl.sourceforge.net/project/nmon/lmon16f.c
 
 wget http://ncu.dl.sourceforge.net/project/nmon/makefile
+
 Rename the file lmon.c and compile with make nmon_mainframe_rhel7
 
 nmon_mainframe_rhel7: $(FILE)
