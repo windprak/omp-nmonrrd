@@ -953,18 +953,18 @@ int	main(int argc, char **argv)
 		for (i = 0; i < linemax; i++)
 			printf("line %d lastline %s\n", i, line[i-1]);
 	//Linux mode
-       if ( (n = findfirst("AAA,OS,Linux")) != -1)
+       if ( (n = findfirst("AAA,OS,Linux")) != -1){
 		linuxone=1; 
                 OS=&line[n][1];
                 printf("os line %s\n",OS);
-                 if(strstr(OS,"s390x")){
+                 if(strstr(OS,"s390x"))
 			 arch = "s390x";
-		         OS="Linux";}
-		 else{
+		         OS="Linux";
+		 
 		 if(strstr(OS,"x86_64"))
 			 arch="x86 64Bit";
 		         OS="Linux";
-	 }
+	 };
 	printf("LinuxMode");
 
 	printf("nmon2rrd version %s\n", VERSION);
