@@ -33,6 +33,6 @@ nmon2rrd:
 
 Download nmon2rrdomp.c
 
-gcc -Wno-implicit-int -o nmon2rrd nmon2rrdomp.c
+gcc -o nmon2rrd nmon2rrdomp.c
 
 ./nmon2rrd -f filename.nmon -d /var/www/html -x
