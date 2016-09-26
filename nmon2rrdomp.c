@@ -2345,7 +2345,7 @@ sprintf(filename, "%s/%s", dirname, "rrd_update");
   printf("No refresh because of wrong -r setting"); }
 
   if( timer >= 5){
-  printf("Refresh enabled every %i Seconds\n",timer);
+  //printf("Refresh enabled every %i Seconds\n",timer);
   timesec=timer;
   refreshenable=1;
   }
@@ -2356,33 +2356,7 @@ sprintf(filename, "%s/%s", dirname, "rrd_update");
 	  refreshenable=0;
 	  }
 	
-/*
-int lefton= snaps-1-snap;
-int timeleft= interval*lefton;
 
-
-printf("Timeleft until completion %d\n",timeleft);
-
-int leftsum = timeleft - timesec;
-
-if(timesec >= 60){
-minutes = timesec / 60.0;
-printf("Refresn in  %d minutes  \n",minutes);
-}else{
-printf("Refresh in  %d Seconds   \n",timesec);
-}*/
-
-  /*
-int zwei=1;
-while(zwei <= 4){
-refreshenable = 1;
-zwei++;
-if(zwei == 4)
-refreshenable = 1;
-}
-} else {
-refreshenable =0;
-}*/
 
 
 }}while(refreshenable != 0);
