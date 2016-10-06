@@ -141,26 +141,6 @@ result.linemax=i;
 	   result.s=s;
 result.longest=longest;
 	   
-/*
-       // Allocate a string that can hold it all
-       buffer = (char*) malloc(sizeof(char) * (string_size + 1) );
-
-       // Read it all in one operation
-       read_size = fread(buffer, sizeof(char), string_size, handler);
-
-       // fread doesn't set it so put a \0 in the last position
-       // and buffer is now officially a string
-       buffer[string_size] = '\0';
-
-       if (string_size != read_size)
-       {
-           // Something went wrong, throw away the memory and set
-           // the buffer to NULL
-           free(buffer);
-           buffer = NULL;
-       }
-*/
-       // Always remember to close the file.
        fclose(handler);
     }
 
